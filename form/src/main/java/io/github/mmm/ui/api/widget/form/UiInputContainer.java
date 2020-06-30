@@ -21,6 +21,12 @@ public interface UiInputContainer<V> extends UiMutableSingleComposite<UiInput<V>
   /** The {@link io.github.mmm.ui.api.datatype.UiStyles#add(String) style} or element name for an input container. */
   String STYLE = "ui-input";
 
+  String STYLE_PREFIX = "ui-prefix";
+
+  String STYLE_SUFFIX = "ui-suffix";
+
+  String STYLE_INPUT_WSUFFIX = "ui-input-field-wSuffix";
+
   /**
    * @return the contained {@link UiInput}. Will initially be {@code null} but is set on initialization and will never
    *         be {@code null} if retrieved via {@link UiInput#getContainerWidget()}.
@@ -49,5 +55,25 @@ public interface UiInputContainer<V> extends UiMutableSingleComposite<UiInput<V>
     widget.setChild(input);
     return widget;
   }
+
+  String getPrefix();
+
+  void setPrefix(String prefix);
+
+  default boolean hasPrefix() {
+
+    boolean result = this.getPrefix() != null;
+    return Boolean.TRUE.equals(result);
+  };
+
+  String getSuffix();
+
+  void setSuffix(String suffix);
+
+  default boolean hasSuffix() {
+
+    boolean result = this.getSuffix() != null;
+    return Boolean.TRUE.equals(result);
+  };
 
 }
